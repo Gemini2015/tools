@@ -1,0 +1,51 @@
+﻿<Window x:Class="FilePoster.CreateFolder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CreateFolder" Height="200" Width="300">
+    
+    <Window.Resources>
+        <Style x:Key="LabelTitle" TargetType="Label">
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+        <Style x:Key="LabelName" TargetType="Label">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        
+        
+        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelTitle}">Name :</Label>
+        <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelTitle}">Path :</Label>
+
+        <Label x:Name="mFolderName"  Grid.Row="0" Grid.Column="1" Style="{StaticResource LabelName}">Path :</Label>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+            <TextBox x:Name="mFilePath" TextChanged="mFilePath_TextChanged"  Width="140" Height="30" Margin="5" TextWrapping="NoWrap"></TextBox>
+            <Button Click="OnBtnBrowse"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="30">Browse</Button>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Click="OnBtnOK"  Margin="5" Padding="5" MinWidth="60">OK</Button>
+            <Button Click="OnBtnCancel"  Margin="5" Padding="5" MinWidth="60">Cancel</Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>
