@@ -43,6 +43,8 @@ namespace FilePoster
         private void OnCreateFolder(object sender, RoutedEventArgs e)
         {
             CreateFolder createFolder = new CreateFolder();
+            createFolder.Owner = this;
+            createFolder.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             bool? ret = createFolder.ShowDialog();
             if(ret.HasValue && ret.Value == true)
             {

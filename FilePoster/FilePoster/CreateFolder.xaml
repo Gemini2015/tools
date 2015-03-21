@@ -1,7 +1,7 @@
 ﻿<Window x:Class="FilePoster.CreateFolder"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CreateFolder" Height="200" Width="300">
+        Title="CreateFolder" Height="200" MinHeight="200" MinWidth="300" Width="300">
     
     <Window.Resources>
         <Style x:Key="LabelTitle" TargetType="Label">
@@ -21,7 +21,7 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="80" />
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -35,12 +35,22 @@
         <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelTitle}">Name :</Label>
         <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelTitle}">Path :</Label>
 
-        <Label x:Name="mFolderName"  Grid.Row="0" Grid.Column="1" Style="{StaticResource LabelName}">Path :</Label>
-        
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="mFilePath" TextChanged="mFilePath_TextChanged"  Width="140" Height="30" Margin="5" TextWrapping="NoWrap"></TextBox>
+        <Label x:Name="mFolderName"  Grid.Row="0" Grid.Column="1" Style="{StaticResource LabelName}"></Label>
+
+        <Grid  Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <DockPanel HorizontalAlignment="Stretch">
+                <TextBox x:Name="mFilePath" TextChanged="mFilePath_TextChanged"  Height="30" Margin="5" TextWrapping="NoWrap"></TextBox>   
+            </DockPanel>
+            <Button Click="OnBtnBrowse" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="30">Browse</Button>
+        </Grid>
+        <!--<StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+            <TextBox x:Name="mFilePath" TextChanged="mFilePath_TextChanged" HorizontalAlignment="Stretch"  MinWidth="140" Height="30" Margin="5" TextWrapping="NoWrap"></TextBox>
             <Button Click="OnBtnBrowse"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="30">Browse</Button>
-        </StackPanel>
+        </StackPanel>-->
         
         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Click="OnBtnOK"  Margin="5" Padding="5" MinWidth="60">OK</Button>

@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:FilePoster"
         xmlns:assembly="clr-namespace:System;assembly=mscorlib"
-        Title="FilePoster" Height="600" Width="800" Loaded="mainWindow_Loaded">
+        Title="FilePoster" Height="600" Width="800" Loaded="mainWindow_Loaded"
+        MinHeight="600" MinWidth="800">
 
     <Window.Resources>
         
@@ -47,12 +48,6 @@
             <Setter Property="BorderThickness" Value="0, 2, 0, 0"/>
             <Setter Property="Padding" Value="10, 0"/>
         </Style>
-        
-        <Style TargetType="Label" x:Key="LabelFocus">
-            <Style.Triggers>
-                
-            </Style.Triggers>
-        </Style>
 
         <ObjectDataProvider x:Key="FPStatus" MethodName="GetValues" 
                             ObjectType="{x:Type assembly:Enum}" >
@@ -73,21 +68,18 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" MinWidth="180"/>
-                <ColumnDefinition Width="*" MinWidth="180"/>
+                <ColumnDefinition Width="*" MinWidth="250"/>
             </Grid.ColumnDefinitions>
             <WrapPanel x:Name="mWrapPanel" Grid.Column="0" MouseLeftButtonUp="OnWrapPanelClick" Background="LightGray" AllowDrop="True" Drop="OnWrapPanelDrop">
-                <!--<Label Style="{StaticResource LabelTileNormal}" Focusable="True">Folder 1</Label>
-                <Label Style="{StaticResource LabelTileNormal}" Panel.ZIndex="2">Folder 2</Label>
-                <Label Style="{StaticResource LabelTileFocus}">Folder 3</Label>-->
             </WrapPanel>
             <GridSplitter Grid.Column="0" Width="5"/>
 
             <StackPanel Grid.Column="1" Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="mCurrentFolderName" MinWidth="120" HorizontalContentAlignment="Center">全局</Label>
-                    <Label>Search:</Label>
-                    <TextBox x:Name="mFilterString" MinWidth="224"></TextBox>
-                </StackPanel>
+                <DockPanel HorizontalAlignment="Stretch">
+                    <Label x:Name="mCurrentFolderName" Width="100" HorizontalContentAlignment="Center" DockPanel.Dock="Left">全局</Label>
+                    <Label HorizontalContentAlignment="Right">Search:</Label>
+                    <TextBox x:Name="mFilterString" Margin="2"></TextBox>
+                </DockPanel>
                 <DataGrid x:Name="mTable" HorizontalAlignment="Center" ItemsSource="{Binding}"  VerticalAlignment="Top" AutoGenerateColumns="False" HorizontalContentAlignment="Center" AlternatingRowBackground="#FF39C5EE" AlternationCount="1" CanUserResizeRows="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn IsReadOnly="True" Header="File" Width="*" Binding="{ Binding Name }"/>
@@ -98,15 +90,17 @@
                 </DataGrid>
             </StackPanel>
         </Grid>
-        
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <Button>保存文件夹设置</Button>
-            <Button>载入文件夹设置</Button>
-            <Button>文件夹列表</Button>
-            <Button Click="OnCreateFolder">创建文件夹</Button>
-        </StackPanel>
-         
+
+        <Border Grid.Row="1" BorderThickness="0, 1, 0, 1" BorderBrush="LightGray">
+            <StackPanel Orientation="Horizontal" >
+                <Button>保存文件夹设置</Button>
+                <Button>载入文件夹设置</Button>
+                <Button>文件夹列表</Button>
+                <Button Click="OnCreateFolder">创建文件夹</Button>
+            </StackPanel>
+        </Border>
+
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
             <Button>撤销</Button>
             <Button>移动</Button>
@@ -115,7 +109,6 @@
 
         <StatusBar Grid.Row="2">
             <StatusBarItem x:Name="mStatusBarFolderPath">
-                
             </StatusBarItem>
         </StatusBar>
         
