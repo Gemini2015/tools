@@ -18,6 +18,8 @@ namespace FilePoster
         {
             mFolderMap = new Dictionary<string, FPFolder>();
             mFolderSetMap = new Dictionary<string, IFolderMap>();
+
+            DBUtil.CreateTable();
         }
 
         public FPStatus Copy()

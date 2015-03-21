@@ -122,17 +122,25 @@ namespace FilePoster
             return ret;
         }
 
-        //public override bool Equals(object obj)
-        //{
-        //    FPFile file = (FPFile)obj;
-        //    if (this.mSrcName == file.mSrcName
-        //        && this.mSrcPath == file.mSrcPath
-        //        && this.mDstName == file.mDstName
-        //        && this.mDstPath == file.mDstPath
-        //        && this.mStatus == file.mStatus)
-        //        return true;
-        //    else return false;
-        //}
+        public static string GetStatusString(FPStatus status)
+        {
+            string ret = "None";
+            switch(status)
+            {
+                case FPStatus.OK:
+                    {
+                        ret = "OK";
+                        break;
+                    }
+                case FPStatus.Error:
+                    {
+                        ret = "Error";
+                        break;
+                    }
+                default:break;
+            }
+            return ret;
+        }
         
     }
 }

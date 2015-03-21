@@ -238,6 +238,10 @@ namespace FilePoster
             }
         }
 
+        private void OnCopyAll(object sender, RoutedEventArgs e)
+        {
+        }
+
     }
 
     public class FileData
