@@ -1,7 +1,7 @@
 ﻿<Window x:Class="FilePoster.CreateFolder"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CreateFolder" Height="200" MinHeight="200" MinWidth="300" Width="300">
+        Title="CreateFolder" Height="200" MinHeight="200" MinWidth="300" Width="300" Icon="res/folder.ico">
     
     <Window.Resources>
         <Style x:Key="LabelTitle" TargetType="Label">
