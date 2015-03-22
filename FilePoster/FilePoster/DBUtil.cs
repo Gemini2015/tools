@@ -101,6 +101,38 @@ namespace FilePoster
 
             DBUtil.ExecuteNonQuery(sql, ps);
         }
+
+        public static IList<FPRecord> GetAllRecord()
+        {
+            string sql = "select * from record";
+            DataTable table = DBUtil.ExecuteQuery(sql, null);
+            IList<FPRecord> recordList = new List<FPRecord>();
+            System.Collections.IEnumerator it = table.Rows.GetEnumerator();
+            while(it.MoveNext())
+            {
+                DataRow row = it.Current as DataRow;
+                FPRecord record = new FPRecord();
+                record.Name = row["name"].ToString();
+                record.SrcPath = row["srcpath"].ToString();
+                record.DestPath = row["destpath"].ToString();
+                record.Method = row["method"].ToString();
+                record.Status = row["status"].ToString();
+                record.Datetime = row["recordtime"].ToString();
+
+                recordList.Add(record);
+            }
+            return recordList;
+        }
     
+    }
+
+    public struct FPRecord
+    {
+        public string Name { get; set; }
+        public string SrcPath { get; set; }
+        public string DestPath { get; set; }
+        public string Method { get; set; }
+        public string Status { get; set; }
+        public string Datetime { get; set; }
     }
 }

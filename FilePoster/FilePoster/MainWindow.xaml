@@ -93,6 +93,7 @@
                 <Button>载入文件夹设置</Button>
                 <Button Click="OnFolderList">文件夹列表</Button>
                 <Button Click="OnCreateFolder">创建文件夹</Button>
+                <Button Click="OnShowHistory">历史记录</Button>
             </StackPanel>
         </Border>
 

@@ -281,6 +281,14 @@ namespace FilePoster
             folderListDlg.ShowDialog();
         }
 
+        private void OnShowHistory(object sender, RoutedEventArgs e)
+        {
+            HistoryRecord dlg = new HistoryRecord();
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            dlg.ShowDialog();
+        }
+
     }
 
     public class FileData
