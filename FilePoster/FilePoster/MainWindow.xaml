@@ -37,15 +37,10 @@
             <Setter Property="MinWidth" Value="150"/>
         </Style>
         
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="5,10"/>
-            <Setter Property="Padding" Value="10,5"/>
-            <Setter Property="Background" Value="LightGray"/>
-        </Style>
 
         <Style TargetType="StatusBarItem">
             <Setter Property="BorderBrush" Value="Gray"/>
-            <Setter Property="BorderThickness" Value="0, 2, 0, 0"/>
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="10, 0"/>
         </Style>
 
@@ -75,12 +70,12 @@
             <GridSplitter Grid.Column="0" Width="5"/>
 
             <StackPanel Grid.Column="1" Orientation="Vertical">
-                <DockPanel HorizontalAlignment="Stretch">
+                <DockPanel HorizontalAlignment="Stretch" Margin="5,0">
                     <Label x:Name="mCurrentFolderName" Width="100" HorizontalContentAlignment="Center" DockPanel.Dock="Left">全局</Label>
                     <Label HorizontalContentAlignment="Right">Search:</Label>
-                    <TextBox x:Name="mFilterString" Margin="2"></TextBox>
+                    <TextBox x:Name="mFilterString" Margin="0,2"></TextBox>
                 </DockPanel>
-                <DataGrid x:Name="mTable" HorizontalAlignment="Center" ItemsSource="{Binding}"  VerticalAlignment="Top" AutoGenerateColumns="False" HorizontalContentAlignment="Center" AlternatingRowBackground="#FF39C5EE" AlternationCount="1" CanUserResizeRows="False">
+                <DataGrid x:Name="mTable" Margin="5,0" ItemsSource="{Binding}" AutoGenerateColumns="False" AlternatingRowBackground="#FF39C5EE" AlternationCount="1" CanUserResizeRows="False" HeadersVisibility="Column">
                     <DataGrid.Columns>
                         <DataGridTextColumn IsReadOnly="True" Header="File" Width="*" Binding="{ Binding Name }"/>
                         <DataGridTextColumn IsReadOnly="True" Header="Path" Width="2*" Binding="{ Binding Path }" />
@@ -96,14 +91,14 @@
             <StackPanel Orientation="Horizontal" >
                 <Button>保存文件夹设置</Button>
                 <Button>载入文件夹设置</Button>
-                <Button>文件夹列表</Button>
+                <Button Click="OnFolderList">文件夹列表</Button>
                 <Button Click="OnCreateFolder">创建文件夹</Button>
             </StackPanel>
         </Border>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
             <Button>撤销</Button>
-            <Button>移动</Button>
+            <Button Click="OnMoveAll">移动</Button>
             <Button Click="OnCopyAll">复制</Button>
         </StackPanel>
 

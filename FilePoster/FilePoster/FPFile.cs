@@ -95,6 +95,7 @@ namespace FilePoster
             try
             {
                 File.Move(srcPathName, destPathName);
+                DBUtil.AddRecord(this, "move");
             }
             catch (System.IO.IOException ex)
             {
@@ -114,6 +115,7 @@ namespace FilePoster
             try
             {
                 File.Copy(srcPathName, destPathName);
+                DBUtil.AddRecord(this, "copy");
             }
             catch (System.IO.IOException ex)
             {

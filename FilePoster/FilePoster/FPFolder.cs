@@ -86,11 +86,15 @@ namespace FilePoster
         {
             FPStatus ret = FPStatus.OK;
             IEnumerator<FPFile> it = mFileList.GetEnumerator();
+            List<FPFile> removelist = new List<FPFile>();
             while(it.MoveNext())
             {
-                if(it.Current.Move() != FPStatus.OK)
+                if (it.Current != null && it.Current.Move() != FPStatus.OK)
                     ret = FPStatus.Error;
+                else removelist.Add(it.Current);
             }
+            foreach (FPFile file in removelist)
+                mFileList.Remove(file);
             return ret;
         }
 
@@ -98,11 +102,15 @@ namespace FilePoster
         {
             FPStatus ret = FPStatus.OK;
             IEnumerator<FPFile> it = mFileList.GetEnumerator();
+            List<FPFile> removelist = new List<FPFile>();
             while(it.MoveNext())
             {
-                if(it.Current != null && it.Current.Copy() != FPStatus.OK)
+                if (it.Current != null && it.Current.Copy() != FPStatus.OK)
                     ret = FPStatus.Error;
+                else removelist.Add(it.Current);
             }
+            foreach (FPFile file in removelist)
+                mFileList.Remove(file);
             return ret;
         }
 

@@ -77,6 +77,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FolderList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,6 +93,9 @@
       <DependentUpon>CreateFolder.xaml</DependentUpon>
     </Compile>
     <Compile Include="DBUtil.cs" />
+    <Compile Include="FolderList.xaml.cs">
+      <DependentUpon>FolderList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FPFile.cs" />
     <Compile Include="FPFolder.cs" />
     <Compile Include="FPManager.cs" />

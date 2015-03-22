@@ -137,8 +137,24 @@ namespace FilePoster
             {
                 label.Content = label.Tag + "\n" + "Files: " + mApp.FPM.GetFolderFilesCount(label.Tag as string);
             }
+            else
+            {
+                System.Collections.IEnumerator it = mWrapPanel.Children.GetEnumerator();
+                while(it.MoveNext())
+                {
+                    Label lb = it.Current as Label;
+                    lb.Content = lb.Tag + "\n" + "Files: " + mApp.FPM.GetFolderFilesCount(lb.Tag as string);
+                }
+            }
 
-            UpdateDataGrid(label.Tag as string);
+            if(label == null)
+            {
+                UpdateDataGrid("");
+            }
+            else
+            {
+                UpdateDataGrid(label.Tag as string);
+            }
         }
 
         private void UpdateDataGrid(string current)
@@ -240,6 +256,29 @@ namespace FilePoster
 
         private void OnCopyAll(object sender, RoutedEventArgs e)
         {
+            if (mApp.FPM.Copy() == FPStatus.OK)
+            {
+                MessageBox.Show("Copy completed!");
+            }
+            else MessageBox.Show("Something wrong with some files!");
+        }
+
+        private void OnMoveAll(object sender, RoutedEventArgs e)
+        {
+            if(mApp.FPM.Move() == FPStatus.OK)
+            {
+                MessageBox.Show("Move completed!");
+            }
+            else MessageBox.Show("Something wrong with some files!");
+            UpdateTileData(null);
+        }
+
+        private void OnFolderList(object sender, RoutedEventArgs e)
+        {
+            FolderList folderListDlg = new FolderList();
+            folderListDlg.Owner = this;
+            folderListDlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            folderListDlg.ShowDialog();
         }
 
     }

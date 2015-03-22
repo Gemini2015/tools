@@ -78,21 +78,23 @@ namespace FilePoster
                 + "Name text,"
                 + "SrcPath text,"
                 + "DestPath text,"
+                + "Method text,"
                 + "Status text,"
                 + "recordtime datetime)";
 
             DBUtil.ExecuteNonQuery(sql, null);
         }
 
-        public static void AddRecord(FPFile file)
+        public static void AddRecord(FPFile file, string method)
         {
-            string sql = "insert into record(name, srcpath, destpath, status, recordtime) values"
-                + "(@name, @srcpath, @destpath, @status, @recordtime)";
+            string sql = "insert into record(name, srcpath, destpath, method, status, recordtime) values"
+                + "(@name, @srcpath, @destpath, @method, @status, @recordtime)";
 
             SQLiteParameter[] ps = new SQLiteParameter[]{
                 new SQLiteParameter("@name", file.mSrcName),
                 new SQLiteParameter("@srcpath", file.mSrcPath),
                 new SQLiteParameter("@destpath", file.mDstPath),
+                new SQLiteParameter("@method", method),
                 new SQLiteParameter("@status", FPFile.GetStatusString(file.mStatus)),
                 new SQLiteParameter("@recordtime", DateTime.Now)
             };
