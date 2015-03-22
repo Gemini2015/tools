@@ -289,6 +289,12 @@ namespace FilePoster
             dlg.ShowDialog();
         }
 
+        private void OnDrawBackAll(object sender, RoutedEventArgs e)
+        {
+            mApp.FPM.DrawBack();
+            UpdateTileData(null);
+        }
+
     }
 
     public class FileData

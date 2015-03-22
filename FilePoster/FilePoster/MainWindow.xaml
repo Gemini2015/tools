@@ -98,13 +98,13 @@
         </Border>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
-            <Button>撤销</Button>
+            <Button Click="OnDrawBackAll">撤销</Button>
             <Button Click="OnMoveAll">移动</Button>
             <Button Click="OnCopyAll">复制</Button>
         </StackPanel>
 
         <StatusBar Grid.Row="2">
-            <StatusBarItem x:Name="mStatusBarFolderPath">
+            <StatusBarItem x:Name="mStatusBarFolderPath">试一试拖动文件夹到灰色区域…
             </StatusBarItem>
         </StatusBar>
         
