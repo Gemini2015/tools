@@ -9,6 +9,6 @@
     `main.pyc`使用我的API_Key编译的二进制码，**可以直接运行**。  
     `makepyc.py`生成pyc的程序。  
 
--	FilePoster:  
+-	FilePost:  
 	文件投递员，简化文件的移动和复制，帮助整理文件。
 	
