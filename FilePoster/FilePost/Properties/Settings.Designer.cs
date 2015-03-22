@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FilePoster.Properties
+namespace FilePost.Properties
 {
 
 

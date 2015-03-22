@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace FilePoster
+namespace FilePost
 {
     /// <summary>
     /// HistoryRecord.xaml 的交互逻辑

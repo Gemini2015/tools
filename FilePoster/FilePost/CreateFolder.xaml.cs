@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.IO;
 
-namespace FilePoster
+namespace FilePost
 {
     /// <summary>
     /// CreateFolder.xaml 的交互逻辑

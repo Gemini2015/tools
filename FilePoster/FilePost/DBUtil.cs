@@ -8,11 +8,11 @@ using System.Data.Common;
 using System.Data;
 using System.IO;
 
-namespace FilePoster
+namespace FilePost
 {
     class DBUtil
     {
-        public static string DBName = "FilePoster.sqlite";
+        public static string DBName = "FilePost.sqlite";
         public static string DBPath = "data";
 
 
@@ -27,6 +27,7 @@ namespace FilePoster
                     string fullpath = Path.Combine(DBPath, DBName);
                     if (!File.Exists(fullpath))
                     {
+                        Directory.CreateDirectory(DBPath);
                         SQLiteConnection.CreateFile(fullpath);
                     }
                     SQLiteConnectionStringBuilder builder = new SQLiteConnectionStringBuilder();

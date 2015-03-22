@@ -1,9 +1,9 @@
-﻿<Window x:Name="mainWindow" x:Class="FilePoster.MainWindow"
+﻿<Window x:Name="mainWindow" x:Class="FilePost.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:FilePoster"
+        xmlns:local="clr-namespace:FilePost"
         xmlns:assembly="clr-namespace:System;assembly=mscorlib"
-        Title="FilePoster" Height="600" Width="800" Loaded="mainWindow_Loaded"
+        Title="FilePost" Height="600" Width="800" Loaded="mainWindow_Loaded"
         MinHeight="600" MinWidth="800" Icon="res/folder.ico">
 
     <Window.Resources>

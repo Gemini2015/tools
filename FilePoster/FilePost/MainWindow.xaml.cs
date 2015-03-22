@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 
-namespace FilePoster
+namespace FilePost
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑

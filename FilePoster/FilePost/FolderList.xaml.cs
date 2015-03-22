@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 
-namespace FilePoster
+namespace FilePost
 {
     /// <summary>
     /// FolderList.xaml 的交互逻辑

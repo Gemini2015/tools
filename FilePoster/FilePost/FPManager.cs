@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace FilePoster
+namespace FilePost
 {
     using IFolderMap = IDictionary<string, FPFolder>;
     using IFolderSetMap = IDictionary<string, IDictionary<string, FPFolder>>;
