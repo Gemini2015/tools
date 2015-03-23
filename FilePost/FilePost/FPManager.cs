@@ -4,21 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using FilePost.Util;
 
 namespace FilePost
 {
     using IFolderMap = IDictionary<string, FPFolder>;
-    using IFolderSetMap = IDictionary<string, IDictionary<string, FPFolder>>;
     public class FPManager
     {
         private IFolderMap mFolderMap;
-        private IFolderSetMap mFolderSetMap;
+        private IList<PreferData> mFolderPrefer;
+
+        public IList<PreferData> FolderPrefer
+        {
+            get
+            {
+                return mFolderPrefer;
+            }
+        }
    
         public FPManager()
         {
             mFolderMap = new Dictionary<string, FPFolder>();
-            mFolderSetMap = new Dictionary<string, IFolderMap>();
+            mFolderPrefer = new List<PreferData>();
 
+            XMLUtil.LoadConfig(mFolderPrefer);
             DBUtil.CreateTable();
         }
 
@@ -146,5 +155,41 @@ namespace FilePost
             return FPStatus.OK;
         }
 
+        public FPStatus SavePreferToXML(string preferName)
+        {
+            if (preferName == "")
+                return FPStatus.Error;
+
+            PreferData preferData = new PreferData("");
+            preferData.Name = preferName;
+            foreach (KeyValuePair<string, FPFolder> kv in mFolderMap)
+            {
+                PreferFolderData folderData = new PreferFolderData();
+                folderData.Name = kv.Key;
+                folderData.Path = kv.Value.mPath;
+
+                preferData.mFolderList.Add(folderData);
+            }
+
+            mFolderPrefer.Add(preferData);
+
+            XMLUtil.SaveConfig(mFolderPrefer);
+
+            return FPStatus.OK;
+        }
+
+        public FPStatus ApplyPrefer(int index)
+        {
+            if (index < 0 || index >= mFolderPrefer.Count)
+                return FPStatus.Error;
+            FPStatus ret = FPStatus.OK;
+            PreferData list = mFolderPrefer[index];
+            foreach(PreferFolderData data in list.mFolderList)
+            {
+                if (AddFolder(data.Path) != FPStatus.OK)
+                    ret = FPStatus.Error;
+            }
+            return ret;
+        }
     }
 }

@@ -254,6 +254,22 @@ namespace FilePost
             }
         }
 
+        private void SyncFolderTile()
+        {
+            IDictionary<string, FPFolder> folderlist = mApp.FPM.GetAllFolder();
+            mWrapPanel.Children.Clear();
+            foreach (KeyValuePair<string, FPFolder> kv in folderlist)
+            {
+                Label label = new Label();
+                label.Content = kv.Key + "\n" + "Files: " + mApp.FPM.GetFolderFilesCount(kv.Key);
+                label.Tag = kv.Key;
+                label.Style = (Style)this.Resources["LabelTileNormal"];
+                label.MouseLeftButtonUp += LabelTile_MouseLeftButtonUp;
+                label.Drop += LabelTile_Drop;
+                mWrapPanel.Children.Add(label);
+            }
+        }
+
         private void OnCopyAll(object sender, RoutedEventArgs e)
         {
             if (mApp.FPM.Copy() == FPStatus.OK)
@@ -293,6 +309,32 @@ namespace FilePost
         {
             mApp.FPM.DrawBack();
             UpdateTileData(null);
+        }
+
+        private void OnSavePrefer(object sender, RoutedEventArgs e)
+        {
+            SavePrefer dlg = new SavePrefer();
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            bool? ret = dlg.ShowDialog();
+            if(ret.HasValue && ret.Value == true)
+            {
+                mApp.FPM.SavePreferToXML(dlg.mPreferName.Text);
+            }
+        }
+
+        private void OnLoadPrefer(object sender, RoutedEventArgs e)
+        {
+            LoadPrefer dlg = new LoadPrefer();
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            bool? ret = dlg.ShowDialog();
+            if(ret.HasValue && ret.Value == true)
+            {
+                int index = dlg.mPreferList.SelectedIndex;
+                mApp.FPM.ApplyPrefer(index);
+                SyncFolderTile();
+            }
         }
 
     }

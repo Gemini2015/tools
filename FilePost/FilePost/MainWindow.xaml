@@ -89,8 +89,8 @@
 
         <Border Grid.Row="1" BorderThickness="0, 1, 0, 1" BorderBrush="LightGray">
             <StackPanel Orientation="Horizontal" >
-                <Button>保存文件夹设置</Button>
-                <Button>载入文件夹设置</Button>
+                <Button Click="OnSavePrefer">保存文件夹设置</Button>
+                <Button Click="OnLoadPrefer">载入文件夹设置</Button>
                 <Button Click="OnFolderList">文件夹列表</Button>
                 <Button Click="OnCreateFolder">创建文件夹</Button>
                 <Button Click="OnShowHistory">历史记录</Button>
