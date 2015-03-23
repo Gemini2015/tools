@@ -82,6 +82,13 @@
                         <DataGridTextColumn IsReadOnly="True" Header="Folder" Width="*" Binding="{ Binding Folder }" />
                         <DataGridComboBoxColumn IsReadOnly="True" Header="Status" Width="80" SelectedItemBinding="{ Binding Status }" ItemsSource="{ Binding Source={ StaticResource FPStatus }}" />
                     </DataGrid.Columns>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu Name="mDataGridMenu" StaysOpen="True">
+                            <MenuItem Header="复制"/>
+                            <MenuItem Header="移动"/>
+                            <MenuItem Header="撤销"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
                 </DataGrid>
             </StackPanel>
         </Grid>
