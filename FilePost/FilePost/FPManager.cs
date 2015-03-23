@@ -191,5 +191,41 @@ namespace FilePost
             }
             return ret;
         }
+
+        public FPStatus DrawBackFile(string folderName, string fileName)
+        {
+            if (folderName == "" || fileName == "")
+                return FPStatus.Error;
+
+            if (!mFolderMap.ContainsKey(folderName))
+                return FPStatus.Error;
+            FPFolder folder = mFolderMap[folderName];
+            FPStatus ret = folder.DrawBackFile(fileName);
+            return ret;
+        }
+
+        public FPStatus MoveFile(string folderName, string fileName)
+        {
+            if (folderName == "" || fileName == "")
+                return FPStatus.Error;
+
+            if (!mFolderMap.ContainsKey(folderName))
+                return FPStatus.Error;
+            FPFolder folder = mFolderMap[folderName];
+            FPStatus ret = folder.MoveFile(fileName);
+            return ret;
+        }
+
+        public FPStatus CopyFile(string folderName, string fileName)
+        {
+            if (folderName == "" || fileName == "")
+                return FPStatus.Error;
+
+            if (!mFolderMap.ContainsKey(folderName))
+                return FPStatus.Error;
+            FPFolder folder = mFolderMap[folderName];
+            FPStatus ret = folder.CopyFile(fileName);
+            return ret;
+        }
     }
 }

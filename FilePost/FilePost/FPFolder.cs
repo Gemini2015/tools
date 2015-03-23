@@ -137,6 +137,48 @@ namespace FilePost
             else return 0;
         }
         
+        public FPStatus DrawBackFile(string fileName)
+        {
+            foreach (FPFile file in mFileList)
+            {
+                if(file.mSrcName == fileName)
+                {
+                    mFileList.Remove(file);
+                    break;
+                }
+            }
+            return FPStatus.OK;
+        }
+
+        public FPStatus MoveFile(string fileName)
+        {
+            FPStatus ret = FPStatus.OK;
+            foreach (FPFile file in mFileList)
+            {
+                if (file.mSrcName == fileName)
+                {
+                    ret = file.Move();
+                    mFileList.Remove(file);
+                    break;
+                }
+            }
+            return ret;
+        }
+
+        public FPStatus CopyFile(string fileName)
+        {
+            FPStatus ret = FPStatus.OK;
+            foreach (FPFile file in mFileList)
+            {
+                if (file.mSrcName == fileName)
+                {
+                    ret = file.Copy();
+                    mFileList.Remove(file);
+                    break;
+                }
+            }
+            return FPStatus.OK;
+        }
 
         //public override bool Equals(object obj)
         //{
