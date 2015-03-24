@@ -84,9 +84,9 @@
                     </DataGrid.Columns>
                     <DataGrid.ContextMenu>
                         <ContextMenu Name="mDataGridMenu" StaysOpen="True">
-                            <MenuItem Header="复制"/>
-                            <MenuItem Header="移动"/>
-                            <MenuItem Header="撤销"/>
+                            <MenuItem Header="复制" Click="OnCopyFile"/>
+                            <MenuItem Header="移动" Click="OnMoveFile"/>
+                            <MenuItem Header="撤销" Click="OnDrawBackFile"/>
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                 </DataGrid>

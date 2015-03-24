@@ -37,7 +37,6 @@ namespace FilePost
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void OnCreateFolder(object sender, RoutedEventArgs e)
@@ -337,6 +336,29 @@ namespace FilePost
             }
         }
 
+        private void OnDrawBackFile(object sender, RoutedEventArgs e)
+        {
+            FileData fileData = mTable.SelectedItem as FileData;
+            mApp.FPM.DrawBackFile(fileData.Folder, fileData.Name);
+            SyncFolderTile();
+            UpdateDataGrid(mCurrentFocuseTile);
+        }
+
+        private void OnMoveFile(object sender, RoutedEventArgs e)
+        {
+            FileData fileData = mTable.SelectedItem as FileData;
+            mApp.FPM.MoveFile(fileData.Folder, fileData.Name);
+            SyncFolderTile();
+            UpdateDataGrid(mCurrentFocuseTile);
+        }
+
+        private void OnCopyFile(object sender, RoutedEventArgs e)
+        {
+            FileData fileData = mTable.SelectedItem as FileData;
+            mApp.FPM.MoveFile(fileData.Folder, fileData.Name);
+            SyncFolderTile();
+            UpdateDataGrid(mCurrentFocuseTile);
+        }
     }
 
     public class FileData
