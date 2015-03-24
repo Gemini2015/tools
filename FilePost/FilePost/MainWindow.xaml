@@ -51,6 +51,11 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         
+        <ContextMenu x:Name="mLabelTileMenu"  x:Key="LabelTileMenu" StaysOpen="True">
+            <MenuItem Header="复制" Click="OnCopyFolder"/>
+            <MenuItem Header="移动" Click="OnMoveFolder"/>
+            <MenuItem Header="撤销" Click="OnDrawBackFolder"/>
+        </ContextMenu>
     </Window.Resources>
 
     <Grid>

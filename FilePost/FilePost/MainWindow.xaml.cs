@@ -248,8 +248,8 @@ namespace FilePost
                 label.Style = (Style)this.Resources["LabelTileNormal"];
                 label.MouseLeftButtonUp += LabelTile_MouseLeftButtonUp;
                 label.Drop += LabelTile_Drop;
+                label.ContextMenu = this.Resources["LabelTileMenu"] as ContextMenu;
                 mWrapPanel.Children.Add(label);
-
             }
         }
 
@@ -265,6 +265,7 @@ namespace FilePost
                 label.Style = (Style)this.Resources["LabelTileNormal"];
                 label.MouseLeftButtonUp += LabelTile_MouseLeftButtonUp;
                 label.Drop += LabelTile_Drop;
+                label.ContextMenu = this.Resources["LabelTileMenu"] as ContextMenu;
                 mWrapPanel.Children.Add(label);
             }
         }
@@ -357,6 +358,36 @@ namespace FilePost
             FileData fileData = mTable.SelectedItem as FileData;
             mApp.FPM.MoveFile(fileData.Folder, fileData.Name);
             SyncFolderTile();
+            UpdateDataGrid(mCurrentFocuseTile);
+        }
+
+        private void OnDrawBackFolder(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = sender as MenuItem;
+            ContextMenu menu = item.Parent as ContextMenu;
+            Label label = menu.PlacementTarget as Label;
+            mApp.FPM.DrawBackFolder(label.Tag as string);
+            UpdateTileData(label);
+            UpdateDataGrid(mCurrentFocuseTile);
+        }
+
+        private void OnMoveFolder(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = sender as MenuItem;
+            ContextMenu menu = item.Parent as ContextMenu;
+            Label label = menu.PlacementTarget as Label;
+            mApp.FPM.MoveFolder(label.Tag as string);
+            UpdateTileData(label);
+            UpdateDataGrid(mCurrentFocuseTile);
+        }
+
+        private void OnCopyFolder(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = sender as MenuItem;
+            ContextMenu menu = item.Parent as ContextMenu;
+            Label label = menu.PlacementTarget as Label;
+            mApp.FPM.CopyFolder(label.Tag as string);
+            UpdateTileData(label);
             UpdateDataGrid(mCurrentFocuseTile);
         }
     }

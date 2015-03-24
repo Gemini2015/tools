@@ -227,5 +227,41 @@ namespace FilePost
             FPStatus ret = folder.CopyFile(fileName);
             return ret;
         }
+
+        public FPStatus DrawBackFolder(string folderName)
+        {
+            if (folderName == "")
+                return FPStatus.Error;
+
+            if (!mFolderMap.ContainsKey(folderName))
+                return FPStatus.Error;
+            FPFolder folder = mFolderMap[folderName];
+            FPStatus ret = folder.DrawBack();
+            return ret;
+        }
+
+        public FPStatus MoveFolder(string folderName)
+        {
+            if (folderName == "")
+                return FPStatus.Error;
+
+            if (!mFolderMap.ContainsKey(folderName))
+                return FPStatus.Error;
+            FPFolder folder = mFolderMap[folderName];
+            FPStatus ret = folder.Move();
+            return ret;
+        }
+
+        public FPStatus CopyFolder(string folderName)
+        {
+            if (folderName == "")
+                return FPStatus.Error;
+
+            if (!mFolderMap.ContainsKey(folderName))
+                return FPStatus.Error;
+            FPFolder folder = mFolderMap[folderName];
+            FPStatus ret = folder.Copy();
+            return ret;
+        }
     }
 }
