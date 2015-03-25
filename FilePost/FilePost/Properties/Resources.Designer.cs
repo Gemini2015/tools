@@ -8,8 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FilePost.Properties
+namespace FilePost.Properties 
 {
+    using System;
 
 
     /// <summary>
@@ -22,7 +23,7 @@ namespace FilePost.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
+    internal class Resources 
     {
 
         private static global::System.Resources.ResourceManager resourceMan;
@@ -30,7 +31,7 @@ namespace FilePost.Properties
         private static global::System.Globalization.CultureInfo resourceCulture;
 
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
+        internal Resources() 
         {
         }
 
@@ -38,11 +39,11 @@ namespace FilePost.Properties
         ///   返回此类使用的、缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
+        internal static global::System.Resources.ResourceManager ResourceManager 
         {
-            get
+            get 
             {
-                if ((resourceMan == null))
+                if (object.ReferenceEquals(resourceMan, null)) 
                 {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FilePost.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
@@ -50,21 +51,27 @@ namespace FilePost.Properties
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
-        ///   为所有资源查找重写当前线程的 CurrentUICulture 属性，
-        ///   方法是使用此强类型资源类。
+        ///   使用此强类型资源类，为所有资源查找
+        ///   重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 res/icon/folder.ico 的本地化字符串。
+        /// </summary>
+        internal static string mAppIconPath {
+            get {
+                return ResourceManager.GetString("mAppIconPath", resourceCulture);
             }
         }
     }

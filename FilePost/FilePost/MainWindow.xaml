@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:FilePost"
         xmlns:assembly="clr-namespace:System;assembly=mscorlib"
         Title="FilePost" Height="600" Width="800" Loaded="mainWindow_Loaded"
-        MinHeight="600" MinWidth="800" Icon="res/folder.ico">
+        MinHeight="600" MinWidth="800" Icon="{DynamicResource mAppIconRes}">
 
     <Window.Resources>
         
@@ -52,9 +52,17 @@
         </ObjectDataProvider>
         
         <ContextMenu x:Name="mLabelTileMenu"  x:Key="LabelTileMenu" StaysOpen="True">
-            <MenuItem Header="复制" Click="OnCopyFolder"/>
-            <MenuItem Header="移动" Click="OnMoveFolder"/>
-            <MenuItem Header="撤销" Click="OnDrawBackFolder"/>
+            <ContextMenu.Resources>
+                <Style TargetType="MenuItem">
+                    <Setter Property="Margin" Value="2"/>
+                </Style>
+            </ContextMenu.Resources>
+            <MenuItem Header="复制" Click="OnCopyFolder">
+            </MenuItem>
+            <MenuItem Header="移动" Click="OnMoveFolder">
+            </MenuItem>
+            <MenuItem Header="撤销" Click="OnDrawBackFolder">
+            </MenuItem>
         </ContextMenu>
     </Window.Resources>
 

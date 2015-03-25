@@ -13,5 +13,6 @@
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
+        <BitmapImage x:Key="mAppIconRes" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="res/icon/folder.ico"/>
     </Application.Resources>
 </Application>
