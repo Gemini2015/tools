@@ -82,6 +82,7 @@
     <Compile Include="SavePrefer.xaml.cs">
       <DependentUpon>SavePrefer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\DBUtil.cs" />
     <Compile Include="Util\Logger.cs" />
     <Compile Include="Util\XMLUtil.cs" />
     <Page Include="CreateFolder.xaml">
@@ -111,7 +112,6 @@
     <Compile Include="CreateFolder.xaml.cs">
       <DependentUpon>CreateFolder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DBUtil.cs" />
     <Compile Include="FolderList.xaml.cs">
       <DependentUpon>FolderList.xaml</DependentUpon>
     </Compile>
