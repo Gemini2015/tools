@@ -29,7 +29,7 @@ namespace FilePost.Util
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                Logger.Instance.Print(ex.ToString());
                 doc = null;
             }
             return doc;
@@ -44,7 +44,7 @@ namespace FilePost.Util
             }
             catch(XmlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                Logger.Instance.Print(ex.ToString());
             }
         }
 

@@ -82,6 +82,7 @@
     <Compile Include="SavePrefer.xaml.cs">
       <DependentUpon>SavePrefer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\Logger.cs" />
     <Compile Include="Util\XMLUtil.cs" />
     <Page Include="CreateFolder.xaml">
       <SubType>Designer</SubType>
