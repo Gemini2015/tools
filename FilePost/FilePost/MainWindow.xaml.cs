@@ -60,24 +60,28 @@ namespace FilePost
             Label label = sender as Label;
             if(e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                string fileName = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
-                FileAttributes fi = File.GetAttributes(fileName);
-                if((fi & FileAttributes.Directory) == FileAttributes.Directory)
+                System.Collections.IEnumerator it = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetEnumerator();
+                while(it.MoveNext())
                 {
-                    string[] fileList = Directory.GetFiles(fileName);
-                    if(fileList.Length > 0)
-                        mApp.FPM.AddFileList(label.Tag as string, fileList);
-                    UpdateTileData(label);
-                    
-                }
-                else if ((fi & FileAttributes.Archive) == FileAttributes.Archive)
-                {
-                    mApp.FPM.AddFile(label.Tag as string, fileName);
-                    UpdateTileData(label);
-                }
-                else
-                {
-                    MessageBox.Show("什么鬼！");
+                    string fileName = it.Current as string;
+                    FileAttributes fi = File.GetAttributes(fileName);
+                    if ((fi & FileAttributes.Directory) == FileAttributes.Directory)
+                    {
+                        string[] fileList = Directory.GetFiles(fileName);
+                        if (fileList.Length > 0)
+                            mApp.FPM.AddFileList(label.Tag as string, fileList);
+                        UpdateTileData(label);
+
+                    }
+                    else if ((fi & FileAttributes.Archive) == FileAttributes.Archive)
+                    {
+                        mApp.FPM.AddFile(label.Tag as string, fileName);
+                        UpdateTileData(label);
+                    }
+                    else
+                    {
+                        MessageBox.Show("什么鬼！");
+                    }
                 }
             }
             else
