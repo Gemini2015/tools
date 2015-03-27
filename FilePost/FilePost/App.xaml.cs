@@ -27,5 +27,13 @@ namespace FilePost
             }
         }
 
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            if(!DBUtil.CheckDepedencies())
+            {
+                Application.Current.Shutdown(-1);
+            }
+        }
+
     }
 }

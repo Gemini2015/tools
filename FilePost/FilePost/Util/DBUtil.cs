@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Data.Common;
 using System.Data;
 using System.IO;
+using System.Windows;
 
 namespace FilePost
 {
@@ -123,6 +124,23 @@ namespace FilePost
                 recordList.Add(record);
             }
             return recordList;
+        }
+
+        public static bool CheckDepedencies()
+        {
+            bool ret = true;
+            if(!File.Exists("System.Data.SQLite.dll"))
+            {
+                MessageBox.Show("Missing System.Data.SQLite.dll!");
+                ret = false;
+            }
+
+            if(!File.Exists("SQLite.Interop.dll"))
+            {
+                MessageBox.Show("Missing SQLite.Interop.dll");
+                ret = false;
+            }
+            return ret;
         }
     
     }
