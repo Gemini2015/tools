@@ -9,7 +9,10 @@
 
 ## 使用帮助
 
-假设`main.pyc`位置为`~/util/main.pyc`。
-`$ python ~/util/main.pyc [-d] word`
-建议在`.bashrc`中加入`alias`。
+假设`main.pyc`位置为`~/util/main.pyc`。  
+
+`$ python ~/util/main.pyc [-d] word`  
+
+建议在`.bashrc`中加入`alias`。  
+
 `alias tl='python ~/util/main.pyc'`
