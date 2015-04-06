@@ -76,6 +76,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ItemCountConverter.cs" />
     <Compile Include="LoadPrefer.xaml.cs">
       <DependentUpon>LoadPrefer.xaml</DependentUpon>
     </Compile>
