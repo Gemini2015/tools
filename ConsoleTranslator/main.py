@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # Chris Cheng
 # gemini2015@hotmail.com
 # 2015.3.10
