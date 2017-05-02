@@ -110,6 +110,52 @@ class BaiduTrans(Translator):
         return ret
 
 
+class ShanBay(Translator):
+    API_DICT_URL = "https://api.shanbay.com/bdc/search/?%s"
+
+    def __init__(self):
+        Translator.__init__(self)
+        self.name = "ShanBay API"
+
+    def translate(self, word, dic=False, src="en", dst="zh"):
+        pre_result = ""
+
+        result = self.__get(word, dic, src, dst)
+        result = self.__parse(result, dic)
+        return pre_result + result
+
+    def __get(self, word, dic, src, dst):
+        api_url = self.API_DICT_URL
+        data = {
+            "word": word,
+        }
+        param = urllib.urlencode(data)
+        result = urllib.urlopen(api_url % param).read()
+        return result
+
+    def __parse(self, result, dic):
+        return self.__parsedict(result)
+
+    def __parsedict(self, result):
+        obj = json.JSONDecoder().decode(result)
+        if "status_code" not in obj:
+            return "Error: No Result From " + self.name + "\n"
+
+        code = int(obj["status_code"])
+        if code != 0:
+            return "Error: Invalid Result From " + self.name + "\n"
+
+        if len(obj["data"]) == 0:
+            return "Error: Word Not Found \n"
+
+        data = obj["data"]
+        wordname = data["content"]
+        ret = wordname + "\n"
+        ret += "EN:\n" + data["en_definition"]["pos"] + "\t" + data["en_definition"]["defn"] + "\n"
+        ret += "\nCN:\n" + data["definition"] + "\n"
+        return ret
+
+
 class Shell:
     __translator = None
 
@@ -127,13 +173,13 @@ class Shell:
 
         if len(argv) == 2:
             word = argv[1]
-            self.__translator = BaiduTrans()
+            self.__translator = ShanBay()
             result = self.__translator.translate(word)
             print result
             return
 
         # select translator
-        self.__translator = BaiduTrans()
+        self.__translator = ShanBay()
         if "-e" in argv:
             index = argv.index("-e")
             op = argv[index + 1]
@@ -141,6 +187,8 @@ class Shell:
                 self.__translator = BaiduTrans()
             elif op == "y":
                 self.__translator = BaiduTrans()
+            elif op == "s":
+                self.__translator = ShanBay()
 
         # translate or dictionary
         dic = False
